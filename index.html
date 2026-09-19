@@ -1,89 +1,241 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Test Login</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Demo Login</title>
 
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #ffffff;
-      display: flex;
-      justify-content: center;
-      padding-top: 80px;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    .login-box {
-      width: 360px;
+    body {
+      min-height: 100vh;
+      background: #ffffff;
+      font-family: Arial, Helvetica, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      color: #111;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 520px;
+      min-height: 100vh;
+      background: #fff;
+    }
+
+    .top {
+      height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    .demo-icon {
+      width: 78px;
+      height: 78px;
+      border-radius: 22px;
+      background:
+        linear-gradient(
+          135deg,
+          #7356ff 0%,
+          #db3f98 35%,
+          #ff755d 65%,
+          #ffc34b 100%
+        );
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .demo-icon::before {
+      content: "";
+      width: 42px;
+      height: 42px;
+      border: 6px solid white;
+      border-radius: 50%;
+    }
+
+    .demo-icon::after {
+      content: "";
+      position: absolute;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: white;
+      right: 15px;
+      top: 14px;
+    }
+
+    .content {
+      padding: 54px 48px 30px;
+    }
+
+    .demo-label {
+      font-size: 12px;
+      color: #777;
+      margin-bottom: 10px;
+      letter-spacing: 0.4px;
     }
 
     h2 {
-      margin-bottom: 28px;
+      font-size: 19px;
+      font-weight: 600;
+      margin-bottom: 25px;
     }
 
-    input {
+    .field {
       width: 100%;
-      box-sizing: border-box;
-      padding: 18px;
-      margin-bottom: 14px;
-      border: 1px solid #ccc;
-      border-radius: 14px;
+      height: 64px;
+      border: 1px solid #cfd4da;
+      border-radius: 17px;
+      padding: 0 18px;
       font-size: 16px;
+      outline: none;
+      margin-bottom: 13px;
+      background: #fff;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
     }
 
-    button {
+    .field:focus {
+      border-color: #5d9ee8;
+      box-shadow: 0 0 0 2px rgba(93, 158, 232, 0.14);
+    }
+
+    .field::placeholder {
+      color: #69707b;
+    }
+
+    .login-btn {
       width: 100%;
-      padding: 15px;
-      border: 0;
+      height: 48px;
+      border: none;
       border-radius: 25px;
-      font-size: 16px;
+      margin-top: 12px;
+      background: #91bbed;
+      color: white;
+      font-size: 15px;
+      font-weight: 600;
       cursor: pointer;
     }
 
-    #status {
-      margin-top: 20px;
+    .login-btn:hover {
+      background: #78ace9;
+    }
+
+    .forgot {
+      display: block;
+      text-align: center;
+      margin-top: 24px;
       font-size: 14px;
+      color: #111;
+      text-decoration: none;
+    }
+
+    .status {
+      margin-top: 24px;
+      text-align: center;
+      font-size: 13px;
+      color: #555;
+      min-height: 20px;
+    }
+
+    .notice {
+      margin-top: 28px;
+      padding: 12px;
+      background: #f6f7f8;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 12px;
+      color: #70757a;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 520px) {
+      .content {
+        padding-left: 22px;
+        padding-right: 22px;
+      }
     }
   </style>
 </head>
 
 <body>
 
-<div class="login-box">
+  <main class="page">
 
-  <h2>Test Login</h2>
+    <div class="top">
+      <div class="demo-icon"></div>
+    </div>
 
-  <input
-    type="text"
-    name="username"
-    autocomplete="username"
-    placeholder="Mobile number, username or email"
-  >
+    <section class="content">
 
-  <input
-    type="password"
-    name="password"
-    autocomplete="current-password"
-    placeholder="Password"
-  >
+      <div class="demo-label">AUTOMATION TEST PAGE</div>
 
-  <button type="submit" id="loginButton">
-    Log in
-  </button>
+      <h2>Log into Demo</h2>
 
-  <div id="status"></div>
+      <form id="loginForm">
 
-</div>
+        <input
+          class="field"
+          id="username"
+          name="username"
+          type="text"
+          autocomplete="username"
+          placeholder="Mobile number, username or email"
+        />
 
-<script>
-document.getElementById("loginButton").addEventListener("click", function(e) {
-  e.preventDefault();
+        <input
+          class="field"
+          id="password"
+          name="password"
+          type="password"
+          autocomplete="current-password"
+          placeholder="Password"
+        />
 
-  document.getElementById("status").textContent =
-    "Test login button clicked successfully.";
-});
-</script>
+        <button
+          class="login-btn"
+          id="loginButton"
+          type="submit"
+        >
+          Log in
+        </button>
+
+      </form>
+
+      <a class="forgot" href="javascript:void(0)">
+        Forgot password?
+      </a>
+
+      <div id="status" class="status"></div>
+
+      <div class="notice">
+        Demo/Test page only. Entered values are not transmitted or stored.
+      </div>
+
+    </section>
+
+  </main>
+
+  <script>
+    const form = document.getElementById("loginForm");
+    const status = document.getElementById("status");
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      status.textContent =
+        "Test login button clicked successfully.";
+    });
+  </script>
 
 </body>
 </html>
